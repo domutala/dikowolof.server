@@ -25,9 +25,6 @@ export const init = async () => {
 
   const networkInterfaces = os.networkInterfaces();
   const pack = require("../package.json");
-  // process.env.NODE_ENV !== "development"
-  //   ? require("./package.json")
-  //   : require("../package.json");
 
   // console.clear();
   console.log("\x1b[0m", "");
