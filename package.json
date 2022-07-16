@@ -43,7 +43,7 @@
     "typescript": "^4.4.3"
   },
   "scripts": {
-    "start": "ts-node -r tsconfig-paths/register src/index.ts",
+    "start": "ts-node src/index.ts",
     "test": "ts-node -r tsconfig-paths/register test/index.ts",
     "dev": "nodemon"
   }
