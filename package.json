@@ -47,7 +47,7 @@
   },
   "scripts": {
     "test": "ts-node -r tsconfig-paths/register test/index.ts",
-    "start": "ts-node -r tsconfig-paths/register start/index.ts",
+    "start": "ts-node -r tsconfig-paths/register src/index.ts",
     "dev": "nodemon"
   }
 }
