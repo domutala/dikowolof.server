@@ -1,5 +1,5 @@
 import { Connection, createConnection } from "typeorm";
-import * as config from "./config";
+import config from "@/data/config";
 
 /**
  * @author
@@ -11,10 +11,9 @@ const init = async () => {
   let odb: Connection;
 
   try {
-    const conf = await config.default({
-      prod: process.env.NODE_ENV === "production",
-      name: "dikowolof",
-    });
+    const name = "wolof";
+    const prod = process.env.NODE_ENV !== "development";
+    const conf = await config({ prod, name });
 
     odb = await createConnection(conf);
   } catch (err) {

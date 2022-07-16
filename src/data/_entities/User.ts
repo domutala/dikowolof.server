@@ -7,6 +7,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { MUserParams } from "~/src/models/User";
 
 /**
  * cette table contient les information de l'utilisateur.
@@ -19,7 +20,7 @@ export default class User extends BaseEntity {
   id!: ObjectID;
 
   @Column()
-  params!: { [key: string]: any };
+  params!: MUserParams;
 
   @Column({ type: "datetime" })
   @CreateDateColumn()

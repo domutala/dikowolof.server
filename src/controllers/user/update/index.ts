@@ -1,9 +1,9 @@
 import * as express from "express";
 
-import add from "./_add";
+import name from "./_name";
 
 const router = express.Router();
 
-router.post("/add", add);
+router.post("/name", name);
 
 export default router;

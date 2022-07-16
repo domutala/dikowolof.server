@@ -1,9 +1,10 @@
 import * as http from "http";
-import * as express from "express";
-import * as cors from "cors";
+import express from "express";
+import cors from "cors";
 import * as bodyParser from "body-parser";
 import * as os from "os";
-import * as fileUpload from "express-fileupload";
+import fileUpload from "express-fileupload";
+import * as useragent from "express-useragent";
 
 export const init = async () => {
   // démarer le server
@@ -11,9 +12,10 @@ export const init = async () => {
 
   // config
   app.use(cors());
-  app.use(bodyParser.json({}));
+  app.use(bodyParser.json({ limit: "50mb" }));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(fileUpload());
+  app.use(useragent.express());
 
   const server = http.createServer(app);
 

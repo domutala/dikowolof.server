@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import sender from "../_functions/sender";
-import _login from "@/services/session/login";
+import _logout from "@/services/session/logout";
 
 export default async (req: Request, res: Response) => {
   try {
-    const user = await _login({ ...req.body, session: req.session as any });
-    sender(req, res, { value: user });
+    await _logout({ session: req.session as any });
+    sender(req, res, { value: true });
   } catch (error: any) {
     sender(req, res, { error });
   }

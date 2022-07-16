@@ -7,6 +7,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { IWordParams } from "~/src/models/Word";
 
 /**
  * @author domutala
@@ -17,7 +18,7 @@ export default class Word extends BaseEntity {
   id!: ObjectID;
 
   @Column()
-  user!: string;
+  params!: IWordParams;
 
   @Column({ type: "datetime" })
   @CreateDateColumn()

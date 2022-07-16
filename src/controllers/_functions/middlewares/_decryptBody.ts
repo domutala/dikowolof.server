@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import utils from "../../../utils";
+import rsa from "@/utils/rsa";
 import sender from "../sender";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
@@ -7,10 +7,11 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     let body: { [key: string]: any } = {};
 
     if (req.body && req.body.body) {
-      body = JSON.parse(utils.rsa.decrypter({ data: req.body.body }));
+      body = JSON.parse(rsa.decrypter({ data: req.body.body }));
     }
 
-    body.publicKey = req.body.publicKey;
+    if (body === null) body = {};
+    if (req.url === "/session/init") body.publicKey = req.body.publicKey;
     req.body = body;
 
     next();

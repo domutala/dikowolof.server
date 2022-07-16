@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import utils from "../../utils";
+import rsa from "@/utils/rsa";
 
 export type IResponse = {
   value?: any;
@@ -21,7 +21,7 @@ export const data_encrypter = (publickey: string, data: any) => {
   let encrypt_data: any;
 
   if (data && publickey) {
-    encrypt_data = utils.rsa.encrypter({
+    encrypt_data = rsa.encrypter({
       key: publickey,
       data: JSON.stringify(data),
     });
@@ -40,7 +40,7 @@ export const jsoniffer = async (
   data: any,
   status = 200
 ) => {
-  data = data_encrypter(_req.session?.publicKey as string, data);
+  data = data_encrypter(_req.session?.params.keys.public as string, data);
 
   const dup = token_encrypter(_req, _res);
   _req = dup.req;
@@ -50,9 +50,9 @@ export const jsoniffer = async (
 };
 
 export const error = async (_req: Request, _res: Response, error: any) => {
-  // console.log(_req.url);
-  // console.log("-------------");
-  // console.log(error);
+  console.log(_req.url);
+  console.log("-------------");
+  console.log(error);
 
   let name = "";
 

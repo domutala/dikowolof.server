@@ -1,11 +1,12 @@
 import * as express from "express";
+import _isSessionValid from "@/controllers/_functions/middlewares/_isSessionValid";
 
-import get from "./_get";
-import params from "./params";
+import update from "./update";
+import getmine from "./_getmine";
 
 const router = express.Router();
 
-router.post("/get", get);
-router.use("/params", params);
+router.use("/update", [_isSessionValid], update);
+router.post("/getmine", [_isSessionValid], getmine);
 
 export default router;

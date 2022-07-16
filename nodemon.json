@@ -9,7 +9,7 @@
   "watch": ["src/*"],
   "env": {
     "NODE_ENV": "development",
-    "PORT": 7005
+    "PORT": 7006
   },
   "ext": "ts,js,json"
 }

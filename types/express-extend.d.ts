@@ -1,10 +1,5 @@
-import Session from "../src/data/_entities/Session";
-import User from "../src/data/_entities/User";
-
-declare class ISession extends Session {
-  // _user?: User;
-  user?: User;
-}
+import { EFile } from "@/models/File";
+import { ISession } from "../src/models/Session";
 
 declare global {
   namespace Express {
@@ -15,6 +10,8 @@ declare global {
         session: string;
         file: string;
       };
+
+      nfiles?: Array<EFile>;
     }
   }
 }
