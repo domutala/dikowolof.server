@@ -3,7 +3,7 @@ import { ISession } from "~/src/models/Session";
 
 export default async (session?: ISession) => {
   if (!session) return "_session:notFound";
-  if (session.params.expired) return "_session:closed";
+  if (session.params.close) return "_session:closed";
 
   // chargement des données utilisateur
   if (!session.user) return "_session:notHaveUser";
