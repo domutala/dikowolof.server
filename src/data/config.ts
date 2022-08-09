@@ -16,7 +16,10 @@ export default async ({
     synchronize: true,
     logging: false,
 
-    entities: ["src/data/_entities/*.ts"],
+    entities: [
+      "src/data/_entities/*.ts",
+      "src/servile/src/data/_entities/*.ts",
+    ],
     subscribers: ["src/data/subscriber/*.ts"],
     migrations: ["src/data/migration/*.ts"],
 

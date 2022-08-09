@@ -1,0 +1,8 @@
+dist
+build
+node_modules
+yarn.lock
+yarn.error
+
+.vscode
+.env

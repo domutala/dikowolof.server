@@ -1,4 +1,4 @@
-# io.mood.nexts.server
+# io.mood.wolof.server
 
 ## Build Setup
 

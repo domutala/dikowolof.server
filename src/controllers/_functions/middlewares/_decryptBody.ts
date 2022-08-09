@@ -4,6 +4,9 @@ import sender from "../sender";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
   try {
+    // skip if req start with servile
+    if (req.url.startsWith("/servile")) return next();
+
     let body: { [key: string]: any } = {};
 
     if (req.body && req.body.body) {

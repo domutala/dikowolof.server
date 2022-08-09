@@ -1,11 +1,8 @@
-export interface EFile {
+export interface MFileParams {
   data: string;
   name?: string;
   type: string;
-}
-
-export interface MFileParams extends EFile {
-  user?: string;
+  extras?: any;
 }
 
 export interface MFile {

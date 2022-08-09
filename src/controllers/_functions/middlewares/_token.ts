@@ -8,6 +8,9 @@ import sender from "../sender";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
   try {
+    // skip if req start with servile
+    if (req.url.startsWith("/servile")) return next();
+
     let token = req.headers.token as string;
     if (token && token.split(" ")[0] === "Bearer") token = token.split(" ")[1];
 

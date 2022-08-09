@@ -4,6 +4,9 @@ import sender from "../sender";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
   try {
+    // skip if req start with servile
+    if (req.url.startsWith("/servile")) return next();
+
     if (req.body && req.body.headers) {
       const headers: { [key: string]: any } = JSON.parse(
         rsa.decrypter({ data: req.body.headers })
