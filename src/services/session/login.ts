@@ -2,6 +2,7 @@ import firebase from "firebase-admin";
 import { ISession } from "~/src/models/Session";
 import _add from "@/data/user/add";
 import _sessionUpdateUser from "@/data/session/update/user";
+import _get from "@/services/user/get";
 
 interface Params {
   token: string;
@@ -27,12 +28,13 @@ export default async (params: Params) => {
     throw error;
   }
 
-  const user = await _add({
+  let user = await _add({
     name: fuser.displayName || fuser.uid,
     uid: fuser.uid,
   });
 
   await _sessionUpdateUser({ id: params.session.id, user: user.id });
+  user = (await _get({ id: user.id })) as any;
 
   return user;
 };

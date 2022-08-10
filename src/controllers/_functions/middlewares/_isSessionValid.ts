@@ -13,9 +13,9 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     return sender(req, res, { error: { text: "_session:closed" } });
   }
 
-  if (req.session.user) {
-    return sender(req, res, { error: { text: "_session:notConnected" } });
-  }
+  // if (req.session.user) {
+  //   return sender(req, res, { error: { text: "_session:notConnected" } });
+  // }
 
   return next();
 };
