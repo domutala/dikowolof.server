@@ -4,7 +4,7 @@ import sender from "./functions/sender";
 
 export default async (req: Request, res: Response) => {
   try {
-    if (!req.serviletoken?.save) {
+    if (!req.serviletoken?.add) {
       return sender(req, res, { error: { text: "_file:add:notAuthorized" } });
     }
 
@@ -22,7 +22,7 @@ export default async (req: Request, res: Response) => {
       files = files[0];
     }
 
-    const id = await _add(files);
+    const id = await _add(files, req.serviletoken.extras);
 
     sender(req, res, { value: id });
   } catch (error: any) {

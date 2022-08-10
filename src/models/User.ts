@@ -1,6 +1,7 @@
 export interface MUserParams {
   name: string;
   uid: string;
+  avatar?: string;
 }
 
 export default interface MUser {

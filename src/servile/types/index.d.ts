@@ -2,9 +2,10 @@ export declare global {
   namespace Express {
     interface Request {
       serviletoken?: {
-        save?: boolean;
+        add?: boolean;
         id?: string;
         type?: string[];
+        extras?: any;
       };
     }
   }

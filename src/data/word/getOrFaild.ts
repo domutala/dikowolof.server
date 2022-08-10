@@ -4,13 +4,13 @@ import get, { Params } from "./get";
  * @author domutala
  */
 export default async (params: Params) => {
-  const user = await get(params);
+  const word = await get(params);
 
-  if (!user) {
+  if (!word) {
     const error = Error();
-    error.name = "_user:notFound";
+    error.name = "_word:notFound";
     throw error;
   }
 
-  return user;
+  return word;
 };

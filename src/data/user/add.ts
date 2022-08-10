@@ -1,7 +1,7 @@
 import MUser from "@/models/User";
-import toObject from "../toObject";
 import User from "../_entities/User";
 import _get from "./get";
+import _getOrFaild from "./getOrFaild";
 
 export interface Params {
   name: string;
@@ -24,14 +24,17 @@ const test = async (params: Params) => {
 export default async (params: Params) => {
   await test(params);
 
-  const user = new User();
+  let user: MUser;
 
   const u = await _get({ uid: params.uid });
-  if (u) user.params = u.params;
+  if (u) user = u;
+  else {
+    const u = new User();
+    u.params = { name: params.name, uid: params.uid };
+    await u.save();
 
-  user.params = { name: params.name, uid: params.uid };
+    user = await _getOrFaild({ uid: u.params.uid });
+  }
 
-  await user.save();
-
-  return toObject<MUser>(user as any) as MUser;
+  return user;
 };

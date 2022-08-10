@@ -8,7 +8,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     if (token && token.split(" ")[0] === "Bearer") token = token.split(" ")[1];
 
     if (token) {
-      const private_key = process.env.PUBLIC_KEY?.replace(
+      const private_key = process.env.PRIVATE_KEY?.replace(
         /\\n/gi,
         "\n"
       ) as string;

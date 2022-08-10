@@ -1,12 +1,10 @@
 import { Request, Response } from "express";
 import sender from "../_functions/sender";
-import _login from "@/services/session/login";
+import _get from "@/services/user/get";
 
 export default async (req: Request, res: Response) => {
   try {
-    // console.log(req.session);
-
-    const user = await _login({ ...req.body, session: req.session as any });
+    const user = await _get({ id: req.query.id as string });
     sender(req, res, { value: user });
   } catch (error: any) {
     sender(req, res, { error });

@@ -14,7 +14,7 @@ const test = async (params: Params) => {
     throw error;
   }
 
-  if (typeof params.value === "string") {
+  if (typeof params.value !== "string") {
     const error = Error();
     error.name = "_word:add:wordIsRequired";
     throw error;

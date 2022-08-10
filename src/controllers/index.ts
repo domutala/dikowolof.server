@@ -1,8 +1,10 @@
 import * as express from "express";
 import middlewares from "./_functions/middlewares";
 import servile from "@/servile";
+
 import session from "./session";
 import word from "./word";
+import file from "./file";
 import user from "./user";
 
 export const init = async (App: express.Express) => {
@@ -18,6 +20,7 @@ export const init = async (App: express.Express) => {
   router.use("/session", session);
   router.use("/word", word);
   router.use("/user", user);
+  router.use("/file", file);
 
   App.use(router);
 };

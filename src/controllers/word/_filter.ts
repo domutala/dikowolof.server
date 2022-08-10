@@ -1,13 +1,14 @@
 import { Request, Response } from "express";
 import sender from "../_functions/sender";
-import _login from "@/services/session/login";
+import _filter from "@/services/word/filter";
 
 export default async (req: Request, res: Response) => {
   try {
-    // console.log(req.session);
+    const word = await _filter({
+      ...(req.query as any),
+    });
 
-    const user = await _login({ ...req.body, session: req.session as any });
-    sender(req, res, { value: user });
+    sender(req, res, { value: word });
   } catch (error: any) {
     sender(req, res, { error });
   }
