@@ -6,6 +6,5 @@ interface Params extends DParams {
 
 export default async (params: Params) => {
   const word = await _filter(params);
-
   return word;
 };

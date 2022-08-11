@@ -1,6 +1,7 @@
 import IWord from "@/models/Word";
 import toObject from "../toObject";
 import Word from "../_entities/Word";
+import _addValue from "./value/add";
 
 interface Params {
   value: string;
@@ -30,6 +31,12 @@ export default async (params: Params) => {
   word.params = { value: params.value, addedBy: params.user };
 
   await word.save();
+
+  await _addValue({
+    value: params.value,
+    user: params.user,
+    word: word.id.toString(),
+  });
 
   return toObject<IWord>(word as any) as IWord;
 };
